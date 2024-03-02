@@ -30,10 +30,15 @@ export default function App() {
 
   return (
     <div className="device-screen">
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      <div className="map-section">
+        <div className="sidebar">
+          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
+        <div ref={mapContainer} className="map-container" />
       </div>
-      <div ref={mapContainer} className="map-container" />
+      <div className="sidebar-section">
+
+      </div>
     </div>
   );
 }
