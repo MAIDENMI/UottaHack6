@@ -10,6 +10,10 @@ import pygame #For playing sound
 import time
 import dlib
 import cv2
+import cv2
+import win32gui
+import win32con
+
 
 #Initialize Pygame and load music
 pygame.mixer.init()
@@ -46,8 +50,8 @@ predictor = dlib.shape_predictor('drowsy_files/shape_predictor_68_face_landmarks
 
 #Start webcam video capture
 video_capture = cv2.VideoCapture(0)
-video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 10)
-video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 10)
+video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 running = True
 
 #Give some time for camera to initialize(not required)
@@ -57,13 +61,14 @@ while(True):
     if(running):
         if(not video_capture.isOpened()):
             video_capture = cv2.VideoCapture(0)
-            video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 10)
-            video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 10)
+            video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+            video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
 
         #Read each frame and flip it, and convert to grayscale
         ret, frame = video_capture.read()
         frame = cv2.flip(frame,1)
-        frame = imutils.resize(frame,width = 50, height = 50)
+        frame = imutils.resize(frame,width = 450, height = 450)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         #Detect facial points through detector function
@@ -109,8 +114,16 @@ while(True):
                 pygame.mixer.music.stop()
                 COUNTER = 0
 
-        #Show video feed
+         #Show video feed
         cv2.imshow('Video', frame)
+
+        # Modify the window to remove the title bar and make it borderless
+        hwnd = win32gui.FindWindow(None, 'Video')
+        style = win32gui.GetWindowLong(hwnd, win32con.GWL_STYLE)
+        style = style & ~win32con.WS_CAPTION
+        win32gui.SetWindowLong(hwnd, win32con.GWL_STYLE, style)
+        win32gui.SetWindowPos(hwnd, 0, 0, 0, 320, 220, win32con.SWP_NOZORDER | win32con.SWP_FRAMECHANGED)
+
         if(cv2.waitKey(1) == ord('q')):
             break
         if(cv2.waitKey(2) == ord('s')):
