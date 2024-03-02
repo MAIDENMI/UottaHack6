@@ -15,10 +15,10 @@ pygame.mixer.init()
 pygame.mixer.music.load('drowsy_files/alert.wav')
 
 #Minimum threshold of eye aspect ratio below which alarm is triggerd
-EYE_ASPECT_RATIO_THRESHOLD = 0.3
+EYE_ASPECT_RATIO_THRESHOLD = 0.40
 
 #Minimum consecutive frames for which eye ratio is below threshold for alarm to be triggered
-EYE_ASPECT_RATIO_CONSEC_FRAMES = 50
+EYE_ASPECT_RATIO_CONSEC_FRAMES = 25
 
 #COunts no. of consecutuve frames below threshold value
 COUNTER = 0
@@ -47,7 +47,7 @@ predictor = dlib.shape_predictor('drowsy_files/shape_predictor_68_face_landmarks
 video_capture = cv2.VideoCapture(0)
 
 #Give some time for camera to initialize(not required)
-time.sleep(2)
+time.sleep(1)
 
 while(True):
     #Read each frame and flip it, and convert to grayscale
