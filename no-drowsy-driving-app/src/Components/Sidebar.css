@@ -1,0 +1,47 @@
+.sidebar {
+    background-color: #e0e0ff;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(226, 223, 223, 0.544);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar h1 {
+    color: #bbbaba;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .drowsiness-btn {
+    background-color: #080c08;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .drowsiness-btn:hover {
+    background-color: #553d89;
+  }
+  
