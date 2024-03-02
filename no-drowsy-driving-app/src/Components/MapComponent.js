@@ -1,22 +1,47 @@
-import React from "react";
-import MapGL from "react-map-gl";
+import React, { useRef, useEffect } from "react";
+import mapboxgl from "mapbox-gl";
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"; // Import directions CSS
 
-const MapComponent = () => {
-  const viewport = {
-    latitude: 37.7577,
-    longitude: -122.4376,
-    zoom: 8,
-    width: "100vw",
-    height: "100vh",
-  };
+mapboxgl.accessToken =
+  "pk.eyJ1IjoicnRpZXJyZSIsImEiOiJjbDg2OWM0b3IwOHExM3ZtcWR5MWlyaXpqIn0.CXyX38b-HvC9pt3kHQc_VA";
+
+export default function MapComponent() {
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+
+  useEffect(() => {
+    if (map.current) return; 
+
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [-74.0066, 40.7135], 
+      zoom: 13,
+    });
+
+    const directions = new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit: "metric",
+      profile: "mapbox/driving",
+    });
+
+    map.current.on("load", () => {
+      map.current.addControl(directions, "top-left");
+    });
+
+    return () => map.current && map.current.remove();
+  }, []);
 
   return (
-    <MapGL
-      {...viewport}
-      mapStyle="mapbox://styles/mapbox/streets-v11"
-      mapboxApiAccessToken="pk.eyJ1IjoicnRpZXJyZSIsImEiOiJjbDg2OWM0b3IwOHExM3ZtcWR5MWlyaXpqIn0.CXyX38b-HvC9pt3kHQc_VA"
-    />
+    <div className="map-container">
+      <div className="map-section">
+        <div
+          ref={mapContainer}
+          className="map-container"
+          style={{ height: "100vh", width: "70vw" }}
+        />
+      </div>
+    </div>
   );
-};
-
-export default MapComponent;
+}

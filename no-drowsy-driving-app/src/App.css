@@ -1,0 +1,13 @@
+/* App.css */
+.app {
+    display: flex; /* Use flexbox */
+    height: 100vh; /* Make the layout cover the entire viewport height */
+  }
+  
+ 
+  .sidebar {
+    height: 100vh;
+    width: 30vw; /* Take 30% of the available space */
+    background-color: red;
+  
+  }
