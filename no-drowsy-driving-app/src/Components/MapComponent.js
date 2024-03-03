@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
-import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"; // Import directions CSS
+// import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+// import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"; // Import directions CSS
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoicnRpZXJyZSIsImEiOiJjbDg2OWM0b3IwOHExM3ZtcWR5MWlyaXpqIn0.CXyX38b-HvC9pt3kHQc_VA";
@@ -20,15 +20,15 @@ export default function MapComponent() {
       zoom: 13,
     });
 
-    const directions = new MapboxDirections({
-      accessToken: mapboxgl.accessToken,
-      unit: "metric",
-      profile: "mapbox/driving",
-    });
+    // const directions = new MapboxDirections({
+    //   accessToken: mapboxgl.accessToken,
+    //   unit: "metric",
+    //   profile: "mapbox/driving",
+    // });
 
-    map.current.on("load", () => {
-      map.current.addControl(directions, "top-left");
-    });
+    // map.current.on("load", () => {
+    //   map.current.addControl(directions, "top-right");
+    // });
 
     return () => map.current && map.current.remove();
   }, []);
