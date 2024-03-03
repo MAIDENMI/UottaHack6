@@ -9,21 +9,13 @@ class Sidebar extends React.Component {
       <aside className="sidebar">
         <h1>WakeyDrivey</h1>
         <div className="input-group">
-          <label htmlFor="from">From:</label>
-          <input type="text" id="from" name="from" />
-        </div>
-        <div className="input-group">
-          <label htmlFor="to">To:</label>
-          <input type="text" id="to" name="to" />
-        </div>
-        <div className="input-group">
-          <label htmlFor="charging">Nearby Charging Stations</label>
+          {/* <label htmlFor="charging">Nearby Charging Stations</label> */}
           
         
         </div>
-        <button className="drowsiness-btn" onClick={this.detectDrowsiness}>
+        {/* <button className="drowsiness-btn" onClick={this.detectDrowsiness}>
           Detect Drowsiness
-        </button>
+        </button> */}
       </aside>
     );
   }

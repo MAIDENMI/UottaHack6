@@ -7,7 +7,7 @@
  
 .sidebar {
     height: 100vh;
-    width: 30vw; /* Take 30% of the available space */
+    width: 33vw; /* Take 30% of the available space */
     background-color: #553d89;
   
   }
@@ -19,6 +19,18 @@
     left: 0;
   }
 
+  .custom-directions-container {
+    position: absolute;
+    right: 50px; /* Adjust the value as needed */
+    top: 10px; /* Adjust the value as needed */
+  }
   
+
+  .mapboxgl-ctrl-top-right {
+    position:fixed;
+    top:90px;
+  }
+  
+
   
 
