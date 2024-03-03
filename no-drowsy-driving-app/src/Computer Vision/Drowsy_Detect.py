@@ -13,11 +13,12 @@ import cv2
 
 # Initialize Pygame and load music
 pygame.mixer.init()
-pygame.mixer.music.load('drowsy_files/alert.wav')
+pygame.mixer.music.load('drowsy_files/rooster-crow.wav')
 
 EYE_ASPECT_RATIO_THRESHOLD = 0.30
 EYE_ASPECT_RATIO_CONSEC_FRAMES = 60
 COUNTER = 0
+RESTART_DELAY = 5
 
 face_cascade = cv2.CascadeClassifier("drowsy_files/haarcascade_frontalface_default.xml")
 
@@ -67,7 +68,8 @@ async def send_video(websocket, path):
             if eyeAspectRatio < EYE_ASPECT_RATIO_THRESHOLD:
                 COUNTER += 1
                 if COUNTER >= EYE_ASPECT_RATIO_CONSEC_FRAMES:
-                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.stop()  # Stop the music before playing it again
+                    pygame.mixer.music.play()
                     cv2.putText(frame, "DROWSY", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                     await websocket.send("ALERT: Drowsy detected!")
             else:
@@ -77,6 +79,8 @@ async def send_video(websocket, path):
         _, buffer = cv2.imencode('.jpg', frame)
         jpg_as_text = base64.b64encode(buffer).decode()
         await websocket.send(jpg_as_text)
+
+        await asyncio.sleep(RESTART_DELAY)
 
 async def server():
     async with websockets.serve(send_video, "localhost", 8765):
