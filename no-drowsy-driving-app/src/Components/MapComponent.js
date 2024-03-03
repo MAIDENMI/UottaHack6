@@ -39,7 +39,7 @@ export default function MapComponent() {
         <div
           ref={mapContainer}
           className="map-container"
-          style={{ height: "100vh", width: "70vw" }}
+          style={{ height: "100vh", width: "100vw" }}
         />
       </div>
     </div>

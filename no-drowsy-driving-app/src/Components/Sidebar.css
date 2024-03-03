@@ -1,17 +1,44 @@
 .sidebar {
-    background-color: #e0e0ff;
+    background-color: #235d3f;
     padding: 20px;
     width: 250px;
-    box-shadow: 0 2px 5px rgba(226, 223, 223, 0.544);
+    box-shadow: -2px 0 5px rgba(226, 223, 223, 0.544);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
   }
   
-  .sidebar h1 {
-    color: #bbbaba;
-    margin-bottom: 20px;
-    text-align: center;
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    z-index: 1001;
+    padding: 10px;
+    background-color: #080c08;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #333;
+  }
+  
+  .sidebar.closed + .toggle-button {
+    right: 250px;
+    transform: translateX(-100%);
   }
   
   .input-group {
@@ -30,7 +57,7 @@
     border: 1px solid #ccc;
   }
   
-  .drowsiness-btn {
+  .drowsiness-btn, .safe-mode-btn {
     background-color: #080c08;
     color: white;
     padding: 10px 15px;
@@ -39,9 +66,23 @@
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 400;
   }
   
-  .drowsiness-btn:hover {
-    background-color: #553d89;
+  .drowsiness-btn:hover, .safe-mode-btn:hover {
+    background-color: #220266;
   }
+  .LogoName{
+    color:White;
+    padding: 20px;
+    display: flex;
+    align-self: center;
+   
+  }
+  .stationheader{
+    color:#ccc;
+    font-weight: 500;
+    padding: auto;
   
+    
+  }
