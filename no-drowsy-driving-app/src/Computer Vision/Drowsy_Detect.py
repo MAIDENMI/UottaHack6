@@ -11,12 +11,9 @@ import dlib
 import cv2
 
 
-
-
-
 # Initialize Pygame and load music
 pygame.mixer.init()
-pygame.mixer.music.load('../drowsy_files/alert.wav')
+pygame.mixer.music.load('drowsy_files/alert.wav')
 
 EYE_ASPECT_RATIO_THRESHOLD = 0.30
 EYE_ASPECT_RATIO_CONSEC_FRAMES = 60
