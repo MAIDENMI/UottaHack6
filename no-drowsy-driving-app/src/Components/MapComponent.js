@@ -36,7 +36,7 @@ const MapComponent = () => {
             params: { near: "Ottawa, ON, Canada", limit: "20" },
             headers: {
               "X-RapidAPI-Key":
-                "f3efbeafaemshf9fc7edbf9cebc2p1eee87jsna9de504fd121",
+                "cae22d9599msh22333f6405add30p1a5416jsn05e4e759af0e",
               "X-RapidAPI-Host": "ev-charge-finder.p.rapidapi.com",
             },
           }
